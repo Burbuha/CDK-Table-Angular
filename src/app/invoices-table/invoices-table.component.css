@@ -1,0 +1,100 @@
+.container {
+  max-width: 1120px;
+  margin: 60px auto;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.24);
+  border-radius: 4px;
+}
+.title {
+  padding: 15px 15px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #000000;
+}
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.action-button{
+  color: #C2C9D1;
+  background-color: transparent;
+  border: none;
+}
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+  font-family: Open Sans;
+}
+
+.cdk-header-cell {
+  position: sticky;
+  top: 0;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.cdk-cell {
+  padding: 16px;
+  font-size: 12px;
+  line-height: 16px;
+}
+.cdk-cell:last-child,
+.cdk-header-cell:last-child {
+  text-align: right;
+}
+tr.selected {
+  background-color: #3e66fb;
+}
+
+td,
+th {
+  padding: 10px 15px;
+}
+
+td {
+  border-top: 1px solid #c2c9d1;
+}
+
+tr:last-of-type td {
+  border-bottom: 1px solid #c2c9d1;
+}
+
+.pagination-wrapper {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination-info {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+ngb-pagination ::ng-deep a {
+  margin-left: 8px;
+  padding: 0 10px;
+  width: 32px;
+  height: 32px;
+  color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 32px;
+}
+
+ngb-pagination ::ng-deep .page-item.active .page-link {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #3E66FB;
+  border-color: #c2c9d1;
+  color: #3E66FB;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 4px;
+}

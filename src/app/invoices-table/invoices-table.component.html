@@ -1,0 +1,70 @@
+<div class="container">
+
+  <div class="table-header">
+    <h1 class="title">Invoices</h1>
+    <div class="actions-row">
+      <button class="action-button">
+        <mat-icon aria-hidden="false" aria-label="download icon">download</mat-icon>
+      </button>
+      <button class="action-button">
+        <mat-icon aria-hidden="false" aria-label="edit icon">edit</mat-icon>
+      </button>
+      <button class="action-button">
+        <mat-icon aria-hidden="false" aria-label="delete icon">delete</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <table cdk-table [dataSource]="dataSource">
+
+    <ng-container cdkColumnDef="header">
+      <th cdk-header-cell *cdkHeaderCellDef>
+        <mat-checkbox [color]="'primary'">
+          Header
+        </mat-checkbox>
+      </th>
+      <td cdk-cell *cdkCellDef="let element; let i=index;">
+        <mat-checkbox [color]="'primary'">
+          {{getHeader(i)}}
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="company">
+      <th cdk-header-cell *cdkHeaderCellDef> Company </th>
+      <td cdk-cell *cdkCellDef="let element"> {{element.company}} </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="invoiceDate">
+      <th cdk-header-cell *cdkHeaderCellDef> Invoice Date </th>
+      <td cdk-cell *cdkCellDef="let element"> {{element.createdAt}} </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="dueDate">
+      <th cdk-header-cell *cdkHeaderCellDef> Due Date </th>
+      <td cdk-cell *cdkCellDef="let element"> {{element.dueDate}} </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="status">
+      <th cdk-header-cell *cdkHeaderCellDef> Status </th>
+      <td cdk-cell *cdkCellDef="let element"></td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="amount">
+      <th cdk-header-cell *cdkHeaderCellDef> Amount </th>
+      <td cdk-cell *cdkCellDef="let element"> {{element.amount.currencySymbol}}{{element.amount.sum}} </td>
+    </ng-container>
+
+    <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+    <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div class="pagination-wrapper">
+    <pre
+      class="pagination-info">Showing {{settingsPagination.page}}-{{settingsPagination.pageSize}} of {{(dataSource.source | async).length}} items</pre>
+    <ngb-pagination class="d-flex justify-content-end" [(page)]="settingsPagination.page"
+      [pageSize]="settingsPagination.pageSize" [collectionSize]="(dataSource.source | async).length"
+      [directionLinks]="false">
+    </ngb-pagination>
+  </div>
+</div>
