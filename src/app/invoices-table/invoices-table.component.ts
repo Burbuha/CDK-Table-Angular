@@ -22,7 +22,6 @@ export class InvoicesTableComponent implements OnInit {
   settingsPagination = {
     page: 1,
     pageSize: 5,
-    maxSize: 5,
   };
   allComplete: boolean = false;
 
@@ -37,7 +36,7 @@ export class InvoicesTableComponent implements OnInit {
   }
 
   getHeader(i: number): string {
-    let number = ('0000' + (i + 1)).slice(-3)
+    let number = ('0000' + (i + 1 + 5 * (this.settingsPagination.page - 1))).slice(-3);
     return `INV - ${number}`;
   }
 }
