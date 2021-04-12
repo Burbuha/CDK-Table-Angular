@@ -26,16 +26,16 @@ export class InvoicesFacadeService {
 
   loadInvoices() {
     //--------------------------Mock data------------------------------------------
-    return this.invoicesState.setInvoices(INVOICES);
+    //return this.invoicesState.setInvoices(INVOICES);
 
     // -----------------------axios-observable-------------------------------------
-    // return this.invoicesApi
-    //   .getInvoices()
-    //   .subscribe(response => {
-    //     response.data.pipe(this.invoicesState.setInvoices(response.data)),
-    //       (error: any) => console.log(error),
-    //       () => this.invoicesState.setUpdating(false)
-    //   });
+    return this.invoicesApi
+      .getInvoices()
+      .subscribe(response => {
+        response.data.pipe(this.invoicesState.setInvoices(response.data)),
+          (error: any) => console.log(error),
+          () => this.invoicesState.setUpdating(false)
+      });
 
     // -----------------------httpClient-----------------------------------------
     // .pipe(tap((invoices: IData[]) => this.invoicesState.setInvoices(invoices)))
