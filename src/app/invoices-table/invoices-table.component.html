@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <table cdk-table [dataSource]="dataSource">
+  <table cdk-table [dataSource]="dataSource.source | async | pagination: settingsPagination.page:settingsPagination.pageSize">
 
     <ng-container cdkColumnDef="header">
       <th cdk-header-cell *cdkHeaderCellDef>

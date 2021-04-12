@@ -14,12 +14,14 @@ import { InvoicesTableComponent } from './invoices-table/invoices-table.componen
 import { HeadersInterceptor } from './interceptor/headers.interceptor';
 import { ApiInterceptor } from './interceptor/api.interceptor';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { PaginationPipe } from './pagination.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    InvoicesTableComponent
+    InvoicesTableComponent,
+    PaginationPipe
   ],
   imports: [
     CommonModule,
