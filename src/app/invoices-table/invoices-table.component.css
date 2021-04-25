@@ -4,6 +4,7 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.24);
   border-radius: 4px;
 }
+
 .title {
   padding: 15px 15px;
   font-weight: 600;
@@ -11,16 +12,19 @@
   line-height: 28px;
   color: #000000;
 }
+
 .table-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.action-button{
-  color: #C2C9D1;
+
+.action-button {
+  color: #c2c9d1;
   background-color: transparent;
   border: none;
 }
+
 table {
   width: 100%;
   border-spacing: 0;
@@ -43,10 +47,12 @@ table {
   font-size: 12px;
   line-height: 16px;
 }
+
 .cdk-cell:last-child,
 .cdk-header-cell:last-child {
   text-align: right;
 }
+
 tr.selected {
   background-color: #3e66fb;
 }
@@ -89,12 +95,52 @@ ngb-pagination ::ng-deep a {
 }
 
 ngb-pagination ::ng-deep .page-item.active .page-link {
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #3E66FB;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.9)
+    ),
+    #3e66fb;
   border-color: #c2c9d1;
-  color: #3E66FB;
+  color: #3e66fb;
 }
 
 ul {
   list-style-type: none;
   margin-top: 4px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.pending {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #F3BB1C;
+  border: 1px solid #F3BB1C;
+  color: #F3BB1C;
+}
+
+.overdue {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #F03738;
+  border: 1px solid #F03738;
+  color: #F03738;
+}
+
+.paid {
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.9)
+    ),
+    #3cc13b;
+  border: 1px solid #3cc13b;
+  color: #3cc13b;
 }

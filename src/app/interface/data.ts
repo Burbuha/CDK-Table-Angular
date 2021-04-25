@@ -9,4 +9,8 @@ export interface IData {
     currencySymbol: string;
     currencyCode: string;
   }
+  completed?: boolean;
+  status?: string;
+  index?: string;
+  isChecked?: boolean;
 };

@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IData } from '../interface/data';
 import { InvoicesFacadeService } from '../invoices-facade.service';
-
-export interface IInvoices extends IData {
-  completed: boolean;
-  status: string;
-}
+import { SystemMessageDialog } from '../system-message/system-message-dialog.component';
 
 @Component({
   selector: 'app-invoices-table',
@@ -16,27 +14,38 @@ export interface IInvoices extends IData {
 })
 export class InvoicesTableComponent implements OnInit {
   dataSource: Observable<IData[]>;
-  invoices: IInvoices[] = [];
   isUpdating$: Observable<boolean>;
   displayedColumns: string[] = ['header', 'company', 'invoiceDate', 'dueDate', 'status', 'amount'];
   settingsPagination = {
     page: 1,
     pageSize: 5,
   };
-  allComplete: boolean = false;
+  allIsChecked: boolean;
 
-  constructor(private invoicesService: InvoicesFacadeService) {
+  constructor(private invoicesService: InvoicesFacadeService, public dialog: MatDialog) {
     this.dataSource = invoicesService.getInvoices$();
     console.log(this.dataSource);
     this.isUpdating$ = invoicesService.isUpdating$();
+    this.allIsChecked = invoicesService.allIsChecked;
   }
 
   ngOnInit(): void {
     this.invoicesService.loadInvoices();
   }
 
-  getHeader(i: number): string {
-    let number = ('0000' + (i + 1 + 5 * (this.settingsPagination.page - 1))).slice(-3);
-    return `INV - ${number}`;
+  updateAllIsChecked() {
+    this.invoicesService.updateAllIsChecked();
+  }
+
+  someIsChecked(): boolean {
+    return this.invoicesService.someIsChecked()
+  }
+
+  setAll(checked: boolean) {
+    this.invoicesService.setAll(checked);
+  }
+
+  onClickMessage() {
+    this.dialog.open(SystemMessageDialog, { panelClass: 'warning' });
   }
 }

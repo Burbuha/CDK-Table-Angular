@@ -2,54 +2,6 @@ import { IData } from '../interface/data';
 
 export const INVOICES: IData[] = [
   {
-    id: '125486',
-    company: 'string',
-    createdAt: '02/04/2021',
-    dueDate: '05/06/2021',
-    amount: {
-      sum: 500,
-      currencyName: 'U.S. dollar',
-      currencySymbol: '$',
-      currencyCode: 'USD',
-    }
-  },
-  {
-    id: '125486',
-    company: 'string',
-    createdAt: '02/04/2021',
-    dueDate: '05/06/2021',
-    amount: {
-      sum: 500,
-      currencyName: 'U.S. dollar',
-      currencySymbol: '$',
-      currencyCode: 'USD',
-    }
-  },
-  {
-    id: '53453',
-    company: 'string',
-    createdAt: '02/04/2021',
-    dueDate: '05/06/2021',
-    amount: {
-      sum: 75,
-      currencyName: 'U.S. dollar',
-      currencySymbol: '$',
-      currencyCode: 'USD',
-    }
-  },
-  {
-    id: '125534654486',
-    company: 'string',
-    createdAt: '02/04/2021',
-    dueDate: '05/06/2021',
-    amount: {
-      sum: 200,
-      currencyName: 'U.S. dollar',
-      currencySymbol: '$',
-      currencyCode: 'USD',
-    }
-  },
-  {
     amount: {
       currencyCode: "AOA",
       currencyName: "East Caribbean Dollar",

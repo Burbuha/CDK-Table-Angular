@@ -6,6 +6,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -15,6 +16,8 @@ import { HeadersInterceptor } from './interceptor/headers.interceptor';
 import { ApiInterceptor } from './interceptor/api.interceptor';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { PaginationPipe } from './pagination.pipe';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -31,8 +34,10 @@ import { PaginationPipe } from './pagination.pipe';
     MatTableModule,
     MatIconModule,
     MatCheckboxModule,
+    MatDialogModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },

@@ -4,7 +4,7 @@
     <h1 class="title">Invoices</h1>
     <div class="actions-row">
       <button class="action-button">
-        <mat-icon aria-hidden="false" aria-label="download icon">download</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="download icon" (click)="onClickMessage()">download</mat-icon>
       </button>
       <button class="action-button">
         <mat-icon aria-hidden="false" aria-label="edit icon">edit</mat-icon>
@@ -19,13 +19,14 @@
 
     <ng-container cdkColumnDef="header">
       <th cdk-header-cell *cdkHeaderCellDef>
-        <mat-checkbox [color]="'primary'">
+        <mat-checkbox [color]="'primary'" [checked]="allIsChecked" [indeterminate]="someIsChecked()"
+          (change)="setAll($event.checked)">
           Header
         </mat-checkbox>
       </th>
-      <td cdk-cell *cdkCellDef="let element; let i=index;">
-        <mat-checkbox [color]="'primary'">
-          {{getHeader(i)}}
+      <td cdk-cell *cdkCellDef="let element">
+        <mat-checkbox [color]="'primary'" [(ngModel)]="element.isChecked" (ngModelChange)="updateAllIsChecked()">
+          {{element.index}}
         </mat-checkbox>
       </td>
     </ng-container>
@@ -37,17 +38,19 @@
 
     <ng-container cdkColumnDef="invoiceDate">
       <th cdk-header-cell *cdkHeaderCellDef> Invoice Date </th>
-      <td cdk-cell *cdkCellDef="let element"> {{element.createdAt}} </td>
+      <td cdk-cell *cdkCellDef="let element"> {{element.createdAt | date: 'MM/dd/yyyy'}} </td>
     </ng-container>
 
     <ng-container cdkColumnDef="dueDate">
       <th cdk-header-cell *cdkHeaderCellDef> Due Date </th>
-      <td cdk-cell *cdkCellDef="let element"> {{element.dueDate}} </td>
+      <td cdk-cell *cdkCellDef="let element"> {{element.dueDate | date: 'MM/dd/yyyy'}} </td>
     </ng-container>
 
     <ng-container cdkColumnDef="status">
       <th cdk-header-cell *cdkHeaderCellDef> Status </th>
-      <td cdk-cell *cdkCellDef="let element"></td>
+      <td cdk-cell *cdkCellDef="let element">
+        <span class="status" [ngClass]="element.status | lowercase">{{element.status}}</span>
+      </td>
     </ng-container>
 
     <ng-container cdkColumnDef="amount">
