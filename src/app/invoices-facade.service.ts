@@ -37,8 +37,7 @@ export class InvoicesFacadeService {
     return this.invoicesApi
       .getInvoices()
       .pipe(
-        tap((invoices: IData[]) => this.invoicesState.setInvoices(invoices)),
-        map((data, i) => ({ ...data, status: this.statuses[this.randomFn()], index: this.getHeader(i), isChecked: false })),
+        tap((invoices: IData[]) => this.invoicesState.setInvoices(invoices.map((data, i) => ({ ...data, status: this.statuses[this.randomFn()], index: this.getHeader(i), isChecked: false })))),
         takeUntil(this.stopSubscriptions$)
       )
       .subscribe(
